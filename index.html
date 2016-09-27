@@ -4,28 +4,40 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="angular.min.js"></script>
-    <script src="angular.js"></script>
+    <!--<script src="angular.js"></script>-->
 </head>
-<body ng-controller="TastCtrl">
-
+<body>
+<div ng-controller="TastCtrl">
     <div class="padding-main">
         <input ng-model="tast" type="text" class="form-control">
         <span class="input-group_btn">
-            <button class="btn btn-default" ng-click="add()">提交</button>
+            <button class="btn btn-default" ng-click="add()">提交1</button>
         </span>
     </div>
+
+    <div class="padding-main">
+        <input ng-model="tast1" type="text" class="form-control">
+        <span class="input-group_btn">
+            <button class="btn btn-default" ng-click="add()">提交2</button>
+        </span>
+    </div>
+
     <h4 ng-if = "tasts.length > 0">任务列表</h4>
     <ul class="list-group" ng-repeat="item in tasts track by $index">
         {{item}}
         <a ng-click="tasts.splice($index, 1)" style="color: aquamarine">删除</a>
     </ul>
+</div>
+
+<div ng-controller="TastCtrl1">
+    <ul class="list-group" ng-repeat="item in arr">
+        {{item}}
+    </ul>
+</div>
 
 
 </body>
 
-<body ng-controller="TastCtrl1">
-    <p>111111111</p>
-</body>
 <script type="text/javascript">
     angular.module('todoList',[])
             .controller('TastCtrl', function ($scope) {
@@ -35,8 +47,12 @@
                     $scope.tasts.push($scope.tast);
                 }
             })
-            .controller('TastCtrl1', function () {
-
+            .controller('TastCtrl1', function ($scope) {
+                $scope.tast1 = "";
+                $scope.arr = [];
+                $scope.add1 = function () {
+                    $scope.arr.push($scope.tast1);
+                }
             })
 </script>
 </html>

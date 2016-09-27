@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>init</title>
+</head>
+<body>
+    <script>
+        function createDor(huawen, dorDir) {
+            if (!(this instanceof createDor)) {
+                return new createDor();
+            }
+            var _dorDir = "普通";
+            var _huawen = "华丽";
+
+            if (dorDir) {
+                this.dorDir = dorDir;
+            } else {
+                this.dorDir = _dorDir;
+            }
+            if (huawen) {
+                this.huawen = huawen;
+            } else {
+                this.huawen = _huawen;
+            }
+            this.create = function () {
+                return "锁头:" + this.dorDir + "花纹:" + this.huawen;
+
+            }
+        }
+
+        var  xiaoming = new createDor("精致","狼牙锁");
+        alert("xiaoming的" + xiaoming.create());
+    </script>
+
+
+</body>
+</html>
