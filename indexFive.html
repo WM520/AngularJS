@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="angular.min.js"></script>
+    <div ng-app="app">
+        <div ng-controller="firstController">
+            <input type="button" ng-value="text" ng-disabled="isDisabled">
+            <input type="text" ng-value="{{text}}" ng-readonly="isDisabled">
+            <input type="checkbox" ng-value="{{text}}" ng-click="isDisabled">
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = angular.module('app',[]);
+        app.controller('firstController',['$scope','$interval',function($scope,$interval){
+            var iNow = 5;
+            $scope.text = iNow+'秒';
+            $scope.isDisabled = true;
+    //setInterval -> $scope.$apply() //$timeout $interval
+            var timer = $interval(function(){
+                iNow--;
+                $scope.text = iNow+'秒';
+                if(iNow == 0){
+                    $interval.cancel(timer);
+                    $scope.text = '可以点击啦';
+                    $scope.isDisabled = false;
+                } },1000);
+        }]);
+    </script>
+</body>
+</html>

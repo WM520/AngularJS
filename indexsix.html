@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--ng init-->
+    <div ng-app="app">
+        <div ng-controller="appCtrl">
+            <div ng-repeat="innerList in list" ng-init="outIndex = $index">
+                <div ng-repeat="value in innerList" ng-init="innerIndex = $index">
+                    <span class="example-init">list[{{outIndex}} ][ {{innerIndex}}] = {{value}}</span>
+                </div>
+            </div>
+            <input type="text" ng-copy="ccc='按下copy执行的方法'" value="你好">{{ccc}}
+        </div>
+    </div>
+    <script src="angular.min.js"></script>
+    <script>
+        var app = angular.module("app",[]);
+        app.controller("appCtrl", function ($scope) {
+            $scope.list = [['a', 'b'], ['c', 'd']];
+        });
+    </script>
+</body>
+</html>

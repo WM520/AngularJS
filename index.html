@@ -14,14 +14,6 @@
             <button class="btn btn-default" ng-click="add()">提交1</button>
         </span>
     </div>
-
-    <div class="padding-main">
-        <input ng-model="tast1" type="text" class="form-control">
-        <span class="input-group_btn">
-            <button class="btn btn-default" ng-click="add()">提交2</button>
-        </span>
-    </div>
-
     <h4 ng-if = "tasts.length > 0">任务列表</h4>
     <ul class="list-group" ng-repeat="item in tasts track by $index">
         {{item}}
@@ -30,29 +22,41 @@
 </div>
 
 <div ng-controller="TastCtrl1">
-    <ul class="list-group" ng-repeat="item in arr">
+    <p>第二个任务</p>
+    <div class="padding-main">
+        <input ng-model="tast1" type="text" class="form-control">
+        <span class="input-group_btn">
+            <button class="btn btn-default" ng-click="add1()">提交2</button>
+        </span>
+    </div>
+    <ul class="list-group" ng-repeat="item in arr track by $index">
         {{item}}
     </ul>
+    {{name}}
 </div>
 
 
 </body>
 
 <script type="text/javascript">
-    angular.module('todoList',[])
-            .controller('TastCtrl', function ($scope) {
+    var app = angular.module('todoList',[]);
+    app.controller('TastCtrl', function ($scope) {
                 $scope.tast= "";
                 $scope.tasts = [];
                 $scope.add = function () {
                     $scope.tasts.push($scope.tast);
                 }
-            })
-            .controller('TastCtrl1', function ($scope) {
-                $scope.tast1 = "";
-                $scope.arr = [];
-                $scope.add1 = function () {
-                    $scope.arr.push($scope.tast1);
-                }
-            })
+    });
+    app.controller('TastCtrl1', function ($scope) {
+        $scope.tast1= "";
+        $scope.arr = [];
+        $scope.add1 = function () {
+            $scope.arr.push($scope.tast1);
+        }
+        $scope.show = function () {
+            alert("1111");
+        }
+        $scope.name = "wangmiao";
+    })
 </script>
 </html>
