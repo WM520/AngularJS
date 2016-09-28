@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<style>
+    input {
+        background-color: aqua;
+    }
+    li {
+       list-style-type: none;
+    }
+</style>
+<body>
+    <div ng-app="app" ng-init="firstName='wangmiao'" ng-controller="TestCtrl">
+        <p>在输入框中尝试输入:</p>
+        <p>姓名:<input type="text" ng-model="name"></p>
+        <p>{{name}}</p>
+        <p>姓名为<span>{{firstName}}</span></p>
+        <p>综合为:{{all}}</p>
+        <form>
+            <input ng-model="count" type="text">
+            <input ng-model="price" type="text">
+            <button ng-click="add()">总价</button>
+            <p>{{allPrice}}</p>
+        </form>
+        <ul>
+            <li ng-repeat="x in person">
+                {{x.name + ',' + x.age}}
+            </li>
+        </ul>
+        <ul>
+            <li>
+                {{name}}
+            </li>
+        </ul>
+    </div>
+<script>
+    // 启动angular
+    angular.module("app", [])
+            .controller("TestCtrl" ,function ($scope, $http) {
+                var quantity = 5;
+                var  cost = 6;
+                $scope.count = "";
+                $scope.price = "";
+                $scope.all = quantity * cost;
+                $scope.add = function () {
+                    $scope.allPrice = $scope.count * $scope.price;
+                };
+                $scope.person = [{name:'wangmiao', age:'18'},
+                    {name:'xiaoli', age:'20'},
+                    {name:'xiaoming', age:'21'}];
+                $http.get("http://221.226.241.34:61158/mobile/index.php?v=2.0&act=article&op=park_article_show&type=2&")
+                        .success(function (response) {
+                            $scope.name = response;
+                        }).error(function (data) {
+                             alert(data);
+                });
+            })
+</script>
+</body>
+</html>
