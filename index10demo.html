@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="app">
+    <div ng-controller="appCtrl">
+        {{name | rHello}}
+    </div>
+</div>
+
+<script>
+    var app = angular.module("app",[]);
+    app.controller("appCtrl", function ($scope) {
+       $scope.name = "hello angularjs"
+    });
+    app.filter("rHello", function () {
+        return function (input) {
+            console.log(input);
+            return input.replace(/hello/, "你好");
+        }
+    })
+</script>
+
+</body>
+</html>
