@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <script src="angular.min.js"></script>
+
     <style>
         .red {
             background: red;
@@ -11,28 +14,30 @@
             background: yellow;
         }
     </style>
-    <script src="angular.min.js"></script>
-    <script>
-        var app = angular.module("app",[]);
-        app.controller("appCtrl", ['$scope', FnAaa]);
-        function FnAaa($scope) {
 
-        }
-        FnAaa.prototype.text = 'hello';
-        FnAaa.prototype.num = '123';
-        FnAaa.prototype.show = function () {
-            return 'angularJS';
-        }
-    </script>
 </head>
 <body>
+
 <!--ng mode-->
 <div ng-app="app">
     <div ng-controller="appCtrl">
         <div>{{a1.text}}:{{a1.show()}}</div>
     </div>
+    <div ng-class="{red:true}">wangmiao</div>
 </div>
 
 
+<script>
+    var app = angular.module("app",[]);
+    app.controller("appCtrl", ['$scope', FnAaa]);
+    function FnAaa($scope) {
+
+    }
+    FnAaa.prototype.text = 'hello';
+    FnAaa.prototype.num = '123';
+    FnAaa.prototype.show = function () {
+        return 'angularJS';
+    }
+</script>
 </body>
 </html>

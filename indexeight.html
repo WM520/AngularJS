@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+    <style>
+        .red {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="firstController">
+            <div ng-class="{red:true}">{{text}}</div>
+        </div>
+    </div>
+    <script>
+        var  app = angular.module("app",[]);
+        app.controller("firstController", function ($scope) {
+            $scope.text = "wangmiao";
+        })
+    </script>
+    
+</body>
+</html>
